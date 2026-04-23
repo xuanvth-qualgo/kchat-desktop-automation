@@ -2,7 +2,7 @@
 
 echo "1. Configuring"
 MAC_VM="xuan.vth@192.168.64.4"
-WIN_VM="xuan.vth@192.168.120.215"
+WIN_VM="xuan.vth@192.168.100.148"
 PROJECT_PATH="$(pwd)"
 PROJECT_NAME=$(basename "$PWD")
 PARENT_DIR="$(dirname "$PROJECT_PATH")"

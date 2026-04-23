@@ -33,7 +33,6 @@ Windows: ipconfig
 MacOS: real machine
 
 chmod +x start-app.sh
-
 ./start-app.sh
 
 # 4. Setup dependencies: if run outside
@@ -41,13 +40,11 @@ chmod +x start-app.sh
 MacOS:
 
 chmod +x setup.sh
-
 ./setup.sh
 
 Windows:
 
 chmod +x setup.bat
-
 ./setup.bat
 
 # 5. Run test by manually: 
