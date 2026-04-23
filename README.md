@@ -1,8 +1,6 @@
 # 1. Github flow
 
-git clone "https://github.com/xuanvth-qualgo/kchat-desktop-automation.git"
-
-cd /kchat-desktop-automation
+git clone "https://github.com/xuanvth-qualgo/kchat-desktop-automation.git" && cd /kchat-desktop-automation
 
 git fetch --all
 
@@ -33,20 +31,17 @@ Windows: ipconfig
 
 MacOS: real machine
 
-chmod +x start-app.sh
-./start-app.sh
+chmod -R 755 . && chmod +x start-app.sh && ./start-app.sh
 
 # 4. Setup dependencies: if run outside
 
 MacOS:
 
-chmod +x setup.sh
-./setup.sh
+chmod +x setup.sh && ./setup.sh
 
 Windows:
 
-chmod +x setup.bat
-./setup.bat
+chmod +x setup.bat && ./setup.bat
 
 # 5. Run test by manually: 
 

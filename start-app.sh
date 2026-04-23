@@ -12,9 +12,7 @@ echo "2. Running on real macOS machine"
 (
 cd "$PROJECT_PATH"
 if [ ! -d "node_modules" ]; then
-    ./setup.sh
-else
-    echo "node_modules already exists → skip setup.sh"
+    chmod +x setup.sh && ./setup.sh
 fi
 open "./Applications/macOS/$APP_NAME.app"
 ) &
@@ -26,9 +24,7 @@ scp -r $PROJECT_NAME $MAC_VM:~
 ssh "$MAC_VM" "
 cd ~/$PROJECT_NAME
 if [ ! -d "node_modules" ]; then
-    ./setup.sh
-else
-    echo "node_modules already exists → skip setup.sh"
+    chmod +x setup.sh && ./setup.sh
 fi
 open \"./Applications/macOS/$APP_NAME.app\"
 " &
@@ -39,9 +35,7 @@ scp -r $PROJECT_NAME $WIN_VM:/c/Users/
 ssh "$WIN_VM" "
 cd /c/Users/$PROJECT_NAME
 if [ ! -d "node_modules" ]; then
-    ./setup.bat
-else
-    echo "node_modules already exists → skip setup.bat"
+    chmod +x setup.bat && ./setup.bat
 fi
 start \"\" \"Applications\\win32\\$APP_NAME.exe\"
 " &
