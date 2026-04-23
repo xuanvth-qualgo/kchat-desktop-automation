@@ -12,7 +12,7 @@ echo "2. Running on real macOS machine"
 (
 cd "$PROJECT_PATH"
 if [ ! -d "node_modules" ]; then
-    chmod +x setup.sh && ./setup.sh
+    ./setup.sh
 fi
 open "./Applications/macOS/$APP_NAME.app"
 ) &
@@ -24,7 +24,7 @@ scp -r $PROJECT_NAME $MAC_VM:~
 ssh "$MAC_VM" "
 cd ~/$PROJECT_NAME
 if [ ! -d "node_modules" ]; then
-    chmod +x setup.sh && ./setup.sh
+    ./setup.sh
 fi
 open \"./Applications/macOS/$APP_NAME.app\"
 " &
@@ -35,7 +35,7 @@ scp -r $PROJECT_NAME $WIN_VM:/c/Users/
 ssh "$WIN_VM" "
 cd /c/Users/$PROJECT_NAME
 if [ ! -d "node_modules" ]; then
-    chmod +x setup.bat && ./setup.bat
+    .\setup.bat
 fi
 start \"\" \"Applications\\win32\\$APP_NAME.exe\"
 " &

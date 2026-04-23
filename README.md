@@ -1,25 +1,24 @@
 # 1. Github flow
 
-git clone "https://github.com/xuanvth-qualgo/kchat-desktop-automation.git" && cd /kchat-desktop-automation
+git clone "https://github.com/xuanvth-qualgo/kchat-desktop-automation.git" && cd kchat-desktop-automation
+
+git update-index --chmod=+x *.sh
 
 git fetch --all
 
 git checkout -b demo-1 origin/demo-1
 
-git pull
-
 git add -A
 
 git diff --staged
 
-git commit -m "{datetime} - {jira id} - {summary}"
-
 git reset {file}
 
-git push
+git commit -m "{datetime} - {jira id} - {summary}"
+
+git push origin demo-1
 
 git status
-
 
 # 2. Find IP Address on the virtual machines (Terminal)
 
@@ -31,17 +30,17 @@ Windows: ipconfig
 
 MacOS: real machine
 
-chmod -R 755 . && chmod +x start-app.sh && ./start-app.sh
+./start-app.sh
 
 # 4. Setup dependencies: if run outside
 
 MacOS:
 
-chmod +x setup.sh && ./setup.sh
+./setup.sh
 
 Windows:
 
-chmod +x setup.bat && ./setup.bat
+.\setup.bat
 
 # 5. Run test by manually: 
 
