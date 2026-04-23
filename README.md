@@ -1,6 +1,7 @@
 # 1. Github flow
 
 git clone "https://github.com/xuanvth-qualgo/kchat-desktop-automation.git"
+
 cd /kchat-desktop-automation
 
 git fetch --all

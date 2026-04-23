@@ -21,7 +21,7 @@ open "./Applications/macOS/$APP_NAME.app"
 
 echo "3. Running on virtual macOS machine"
 cd "$PARENT_DIR"
-rm -rf $PROJECT_NAME $MAC_VM:~
+#rm -rf $PROJECT_NAME $MAC_VM:~
 scp -r $PROJECT_NAME $MAC_VM:~
 ssh "$MAC_VM" "
 cd ~/$PROJECT_NAME
@@ -34,7 +34,7 @@ open \"./Applications/macOS/$APP_NAME.app\"
 " &
 
 echo "4. Running on virtual Windows machine"
-rm -rf $PROJECT_NAME $WIN_VM:/c/Users/
+#rm -rf $PROJECT_NAME $WIN_VM:/c/Users/
 scp -r $PROJECT_NAME $WIN_VM:/c/Users/
 ssh "$WIN_VM" "
 cd /c/Users/$PROJECT_NAME
