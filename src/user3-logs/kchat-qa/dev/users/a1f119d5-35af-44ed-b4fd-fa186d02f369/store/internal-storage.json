@@ -1,0 +1,159 @@
+{
+	"__internal__": {
+		"migrations": {
+			"version": "0.8.5-beta.36de38b6"
+		}
+	},
+	"migrations": {
+		"internalStorageKeyEncodingVersion": "1"
+	},
+	"user": {
+		"default": {
+			"xmpp:joined-rooms": {
+				"value": "[]",
+				"metadata": {
+					"createdAt": 1780981867163,
+					"updatedAt": 1780981977842,
+					"expiresAt": 0,
+					"size": 4,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"mls:local_device_id": {
+				"value": "Z7QWI6QFGWT6P9YS",
+				"metadata": {
+					"createdAt": 1780981929087,
+					"updatedAt": 1780981929087,
+					"expiresAt": 0,
+					"size": 18,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"mls:server_device_id": {
+				"value": "14369",
+				"metadata": {
+					"createdAt": 1780981929546,
+					"updatedAt": 1780981929546,
+					"expiresAt": 0,
+					"size": 7,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"mls:fingerprint": {
+				"value": "Z7QWI6QFGWT6P9YS",
+				"metadata": {
+					"createdAt": 1780981929551,
+					"updatedAt": 1780981929551,
+					"expiresAt": 0,
+					"size": 18,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"mls:key_packages_published": {
+				"value": "true",
+				"metadata": {
+					"createdAt": 1780981929555,
+					"updatedAt": 1780981929555,
+					"expiresAt": 0,
+					"size": 6,
+					"scope": "user",
+					"encrypted": false
+				}
+			}
+		},
+		"sync": {
+			"maintenance:conversation_orphaned_cleanup": {
+				"value": 1780981929565,
+				"metadata": {
+					"createdAt": 1780981929568,
+					"updatedAt": 1780981929568,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"group:global": {
+				"value": 1780981975549,
+				"metadata": {
+					"createdAt": 1780981929661,
+					"updatedAt": 1780981975844,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"conversation:global": {
+				"value": 1780981975547,
+				"metadata": {
+					"createdAt": 1780981929752,
+					"updatedAt": 1780981975824,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"notification:global": {
+				"value": 1780981975550,
+				"metadata": {
+					"createdAt": 1780981929758,
+					"updatedAt": 1780981975816,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"contact:global": {
+				"value": 1780981975548,
+				"metadata": {
+					"createdAt": 1780981929764,
+					"updatedAt": 1780981975834,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"community:global": {
+				"value": 1780981975548,
+				"metadata": {
+					"createdAt": 1780981929839,
+					"updatedAt": 1780981975805,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"message:a1f119d5-35af-44ed-b4fd-fa186d02f369@qa-kchat~qualgo~dev-e9d6d8da-fc7a-4c34-8835-0843b30d3a26@qa-kchat~qualgo~dev": {
+				"value": 1780981929846,
+				"metadata": {
+					"createdAt": 1780981929931,
+					"updatedAt": 1780981929931,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"participant:a1f119d5-35af-44ed-b4fd-fa186d02f369@qa-kchat~qualgo~dev-e9d6d8da-fc7a-4c34-8835-0843b30d3a26@qa-kchat~qualgo~dev": {
+				"value": 1780981966739,
+				"metadata": {
+					"createdAt": 1780981966741,
+					"updatedAt": 1780981966741,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			}
+		}
+	}
+}

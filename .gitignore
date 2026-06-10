@@ -1,3 +1,9 @@
 /Applications
 /node_modules
+/src/user-logs
+/test-logs
 .env
+
+# Allure
+/allure-results
+/allure-report

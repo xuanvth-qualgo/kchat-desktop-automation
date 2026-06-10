@@ -30,8 +30,12 @@ echo   retries: 0,
 echo   use: ^{
 echo     headless: true,
 echo   ^},
+echo   reporter: ^{
+echo     ['html'],
+echo     ['list'],
+echo   ^},
 echo ^});
 ) > playwright.config.ts
 )
 
-echo DONE
+echo DONE Setup for Windows
