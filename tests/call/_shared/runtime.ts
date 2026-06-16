@@ -7,16 +7,56 @@ import { attachScreenshot } from '../../../src/core/reporting/allure';
 import { EPIC, CALLER, CALLEE, type CallScenario } from './base';
 
 // ---------------------------------------------------------------------------
-// retry wrapper — mirrors tests/chat/_shared/runtime.ts so call tests get the
-// same per-step resilience without cross-feature imports.
+// Ngữ cảnh fail của retryStep (call) — scenario đăng ký page Caller/Callee
+// trước khi chạy STEP. Khi step hết retry: tự chụp screenshot + note Allure.
+// ---------------------------------------------------------------------------
+type FailCapturePage = { name: string; page: Page };
+let failCapturePages: FailCapturePage[] = [];
+
+export function setRetryFailureContext(pages: FailCapturePage[]): void {
+   failCapturePages = pages.filter((p) => !!p.page);
+}
+
+export function clearRetryFailureContext(): void {
+   failCapturePages = [];
+}
+
+async function captureFailureArtifacts(label: string, err: Error): Promise<void> {
+   try {
+      await allure.attachment(
+         `FAIL reason — ${label}`,
+         `${err.message}\n\n${err.stack ?? ''}`,
+         'text/plain',
+      );
+   } catch { /* best-effort */ }
+   for (const { name, page } of failCapturePages) {
+      try { await attachScreenshot(page, `FAIL-${name}-${label}`); }
+      catch (e) { log.warn(`[call-step-retry] screenshot ${name} failed: ${(e as Error).message}`); }
+   }
+}
+
+// ---------------------------------------------------------------------------
+// retry wrapper — mirror tests/chat/_shared/runtime.ts để test call cũng có
+// cùng chính sách retry mà không cross-import giữa hai feature.
+//
+// Spec (theo yêu cầu lead):
+//   - Tối đa 3 lần thử (1 lần chính + 2 lần retry).
+//   - Tổng thời gian không vượt 30 giây — fail sớm thay vì kéo dài.
+//   - Mỗi attempt được bọc trong allure.step để hiển thị rõ trên report.
 // ---------------------------------------------------------------------------
 export async function retryStep(
    label: string,
    fn: () => Promise<void>,
    attempts: number = 3,
+   totalTimeoutMs: number = 30_000,
 ): Promise<void> {
    let lastErr: unknown;
+   const deadline = Date.now() + totalTimeoutMs;
    for (let i = 1; i <= attempts; i++) {
+      if (Date.now() >= deadline) {
+         log.warn(`[call-step-retry] "${label}" total timeout ${totalTimeoutMs}ms exceeded before attempt ${i}`);
+         break;
+      }
       const stepLabel = i === 1 ? label : `${label} (retry ${i - 1})`;
       try {
          await allure.step(stepLabel, fn);
@@ -24,8 +64,13 @@ export async function retryStep(
       } catch (e) {
          lastErr = e;
          log.warn(`[call-step-retry] "${label}" attempt ${i}/${attempts} failed: ${(e as Error).message}`);
+         if (Date.now() >= deadline) {
+            log.warn(`[call-step-retry] "${label}" total timeout ${totalTimeoutMs}ms exceeded after attempt ${i}`);
+            break;
+         }
       }
    }
+   await captureFailureArtifacts(label, lastErr as Error);
    throw lastErr;
 }
 

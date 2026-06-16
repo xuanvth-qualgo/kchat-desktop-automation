@@ -54,7 +54,7 @@ Action với sub-cases (action data type khác root data type) dùng suffix `-<X
 | Link | `L` |
 | Emoji | `E` |
 | Image | `I` |
-| Video | `V` |
+| Video | `VD` |
 | File | `F` |
 | Voice | `VO` |
 

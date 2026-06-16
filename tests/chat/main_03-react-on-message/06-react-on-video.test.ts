@@ -12,6 +12,7 @@ runCases(
       scope:         'once',
       skipSidebarUnread: true,
       skipPushNotif: true,
+      rootType:      'video',
       description:   ctx => `[Main Conversation] React on video to ${ctx}`,
 
       seedRoot: async svc => {

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 3,
+  "userId": "a1f119d5-35af-44ed-b4fd-fa186d02f369",
+  "vaultEnabled": true,
+  "scheduledActivation": null,
+  "scheduledRotation": null,
+  "masterVersion": 1,
+  "recovery": {
+    "required": false,
+    "reason": null,
+    "detectedAt": null
+  },
+  "stores": {
+    "realm": {
+      "protection": "protected",
+      "masterVersion": 1,
+      "fingerprint": "d745eb96e0439707",
+      "lastTransitionAt": 1781584617807
+    },
+    "mls": {
+      "protection": "protected",
+      "masterVersion": 1,
+      "fingerprint": "23bad14178dec93c",
+      "lastTransitionAt": 1781584617807
+    }
+  }
+}

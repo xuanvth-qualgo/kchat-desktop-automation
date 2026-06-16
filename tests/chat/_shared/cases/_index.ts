@@ -6,4 +6,5 @@ export * as Image    from './image';
 export * as Video    from './video';
 export * as File     from './file';
 export * as Voice    from './voice';
+export * as MixTypes from './mix-types';
 export * as Reaction from './reaction';

@@ -14,7 +14,7 @@ Total	    85	    19	    66           51
 reaction.ts	5	    0	    5            2
 
 
-===== CHAT CASE TOTAL: 1783
+===== CHAT CASE TOTAL: 1783, SMOKE: 255-300
 1. Send Message: Active (All)
 Main conv: 3 (direct, group, comm)
 Thread conv: 2 (group, comm)

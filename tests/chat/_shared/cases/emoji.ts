@@ -18,7 +18,7 @@ export const CATEGORIES: EmojiObj[] = [
 ];
 
 export const ONE_PER_CATEGORY: EmojiObj[] =
-   CATEGORIES.map(c => ({ category: c.category, emojis: [c.emojis[0]] }));
+   CATEGORIES.map(c => ({ category: c.category, emojis: [c.emojis[7]] }));
 
 const FIRST      = ONE_PER_CATEGORY[0];
 const TWO_GROUPS = CATEGORIES.slice(0, 2);

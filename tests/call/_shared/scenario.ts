@@ -7,7 +7,7 @@ import {
 } from './base';
 import { TenantContext } from '../../../src/tenant/TenantContext';
 import {
-   allureCallMetadata, retryStep, snap, startHostCall,
+   allureCallMetadata, retryStep, setRetryFailureContext, snap, startHostCall,
    wait, waitForVmIncomingCall,
 } from './runtime';
 import type { CallPage } from '../../../src/pages/call/CallPage';
@@ -58,6 +58,12 @@ export function runCallTest(opts: CallTestOpts): void {
 
       const senderChat = chatOf(user1, tenantContext);
       const hostCall   = hostCallOf(user1, tenantContext);
+
+      // Đăng ký page Host + VM để retryStep tự chụp khi step hết retry vẫn fail.
+      setRetryFailureContext([
+         { name: 'host', page: user1.page },
+         { name: 'vm',   page: user2.page },
+      ]);
 
       // STEP 1: Host opens scenario conversation.
       await retryStep(`STEP 1: Host opens "${sc.hostConv.name}"`, async () => {

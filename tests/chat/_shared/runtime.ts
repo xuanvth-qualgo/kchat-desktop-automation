@@ -12,9 +12,11 @@ import {
    test,
    type Action, type Case, type SharedState,
 } from './base';
+import type { Page } from '@playwright/test';
 import { waitForVisible } from '../../../src/core/utils/actions';
 import { ensureInView } from '../../../src/core/utils/ui';
 import { log } from '../../../src/core/log';
+import { attachScreenshot } from '../../../src/core/reporting/allure';
 import type { ChatService } from '../../../src/services/chat/ChatService';
 import { handlerFor } from '../../../src/services/chat/ChatTypeHandlers';
 import type { MessageType } from '../../../src/services/chat/types';
@@ -22,13 +24,65 @@ import type { MessageType } from '../../../src/services/chat/types';
 const seedRootCache = new Map<string, { rootId: string; rootQuoteText?: string }>();
 const seedRootKey = (feature: string, context: string) => `${feature}::${context}`;
 
+// ---------------------------------------------------------------------------
+// Ngữ cảnh fail của retryStep — runner (main.ts / thread.ts) đăng ký
+// danh sách Page trước khi chạy các STEP. Khi step hết retry vẫn fail,
+// retryStep sẽ chụp screenshot tất cả Page + đính lý do fail vào Allure
+// trước khi ném lỗi ra ngoài. Mục đích: report luôn có đủ ảnh 2 phía.
+// ---------------------------------------------------------------------------
+type FailCapturePage = { name: string; page: Page };
+let failCapturePages: FailCapturePage[] = [];
+
+export function setRetryFailureContext(pages: FailCapturePage[]): void {
+   failCapturePages = pages.filter((p) => !!p.page);
+}
+
+export function clearRetryFailureContext(): void {
+   failCapturePages = [];
+}
+
+async function captureFailureArtifacts(label: string, err: Error): Promise<void> {
+   try {
+      await allure.attachment(
+         `FAIL reason — ${label}`,
+         `${err.message}\n\n${err.stack ?? ''}`,
+         'text/plain',
+      );
+   } catch { /* best-effort */ }
+   for (const { name, page } of failCapturePages) {
+      try { await attachScreenshot(page, `FAIL-${name}-${label}`); }
+      catch (e) { log.warn(`[step-retry] screenshot ${name} failed: ${(e as Error).message}`); }
+   }
+}
+
+/**
+ * Bọc 1 bước test với chính sách retry chuẩn của framework.
+ *
+ * Spec (theo yêu cầu lead):
+ *  - Tối đa 3 lần thử (1 lần chính + 2 lần retry).
+ *  - Tổng thời gian không quá 30 giây — fail sớm thay vì kéo dài.
+ *  - Mỗi attempt bọc trong `allure.step` nên hiển thị rõ trên Allure report.
+ *  - Nếu hết retry vẫn fail thì ném lỗi gốc ra ngoài (Playwright sẽ
+ *    đánh dấu test fail + tự chụp screenshot do `screenshot: only-on-failure`).
+ *
+ * @param label          Tên bước hiển thị trên log / Allure (vd: "STEP 3: Host sends message")
+ * @param fn             Hàm async chứa action cần retry
+ * @param attempts       Số lần thử tối đa (mặc định 3)
+ * @param totalTimeoutMs Ngưỡng tổng thời gian retry (mặc định 30_000ms)
+ */
 export async function retryStep(
    label: string,
    fn: () => Promise<void>,
    attempts: number = 3,
+   totalTimeoutMs: number = 30_000,
 ): Promise<void> {
    let lastErr: unknown;
+   const deadline = Date.now() + totalTimeoutMs;
    for (let i = 1; i <= attempts; i++) {
+      if (Date.now() >= deadline) {
+         log.warn(`[step-retry] "${label}" total timeout ${totalTimeoutMs}ms exceeded before attempt ${i}`);
+         break;
+      }
       const stepLabel = i === 1 ? label : `${label} (retry ${i - 1})`;
       try {
          await allure.step(stepLabel, fn);
@@ -36,8 +90,15 @@ export async function retryStep(
       } catch (e) {
          lastErr = e;
          log.warn(`[step-retry] "${label}" attempt ${i}/${attempts} failed: ${(e as Error).message}`);
+         if (Date.now() >= deadline) {
+            log.warn(`[step-retry] "${label}" total timeout ${totalTimeoutMs}ms exceeded after attempt ${i}`);
+            break;
+         }
       }
    }
+   // Hết retry vẫn fail: chụp screenshot mọi Page đã đăng ký + đính lý do
+   // fail vào Allure trước khi ném lỗi ra ngoài.
+   await captureFailureArtifacts(label, lastErr as Error);
    throw lastErr;
 }
 

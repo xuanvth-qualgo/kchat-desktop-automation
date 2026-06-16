@@ -12,6 +12,7 @@ runCases(
       scope:         'once',
       skipSidebarUnread: true,
       skipPushNotif: true,
+      rootType:      'file',
       description:   ctx => `[Main Conversation] React on file to ${ctx}`,
 
       seedRoot: async svc => {

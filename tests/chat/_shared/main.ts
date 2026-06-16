@@ -12,7 +12,17 @@ import {
 import {
    allureMetadata, captureSeedRoot, recordErrors, registerCases,
    resetNotifBaseline, retryStep, stepNotifDelta,
+   setRetryFailureContext, clearRetryFailureContext,
 } from './runtime';
+
+// Decide who seeds the root message:
+//  - file/image/video: VM (CDP-only) cannot stub the Electron file dialog.
+//  - seedFromHost flag: edit/delete/etc. where the actor must own the message.
+const useHostSeeder = (action: Action): boolean =>
+   action.seedFromHost === true ||
+   action.rootType === 'file' ||
+   action.rootType === 'image' ||
+   action.rootType === 'video';
 
 type ConversationRef = { name: string; parent?: string };
 type MainScenario = {
@@ -71,13 +81,18 @@ export function runCases(action: Action, caseGroups: Case[][]): void {
       describe(action.description(sc.context), () => {
          const scenarioShared: SharedState = {};
 
-         if (action.seedRoot) {
+         if (action.seedRoot && !action.seedPerCase) {
             test.beforeAll(async ({ user1, user2, tenantContext }) => {
-               const replier = chatOf(user1, tenantContext);
-               const seeder  = chatOf(user2, tenantContext);
-               await openConv(replier, sc.hostConv);
-               await openConv(seeder, sc.vmConv);
-               await captureSeedRoot(action, scenarioShared, seeder, replier, sc.context);
+               const hostSvc = chatOf(user1, tenantContext);
+               const vmSvc   = chatOf(user2, tenantContext);
+               await openConv(hostSvc, sc.hostConv);
+               await openConv(vmSvc,   sc.vmConv);
+               // Default: VM seeds, host mirrors. Swap when host must be seeder
+               // (file/image/video dialog stub, or action requires actor==owner).
+               const hostSeeds = useHostSeeder(action);
+               const seeder = hostSeeds ? hostSvc : vmSvc;
+               const mirror = hostSeeds ? vmSvc   : hostSvc;
+               await captureSeedRoot(action, scenarioShared, seeder, mirror, sc.context);
             });
          }
 
@@ -91,7 +106,7 @@ export function runCases(action: Action, caseGroups: Case[][]): void {
          });
 
          registerCases(scopedCases, tc =>
-            runSteps(action, sc, tc, useSerial ? scenarioShared : undefined),
+            runSteps(action, sc, tc, (useSerial && !action.seedPerCase) ? scenarioShared : undefined),
          );
       });
    }
@@ -106,7 +121,14 @@ function runSteps(action: Action, sc: Scenario, tc: Case, scenarioShared?: Share
       const notif    = notifOf(user2);
       const N        = tc.rounds ?? 1;
       const shared: SharedState = scenarioShared ?? {};
-      const quoteOf  = action.verifyQuote ? shared.rootQuoteText : undefined;
+      const quoteOf = (): string | undefined =>
+         action.verifyQuote ? shared.rootQuoteText : undefined;
+
+      // Đăng ký page Host + VM để retryStep tự chụp khi step hết retry vẫn fail.
+      setRetryFailureContext([
+         { name: 'host', page: user1.page },
+         { name: 'vm',   page: user2.page },
+      ]);
 
       await allureMetadata({
          action, storyLabel: action.description(sc.context),
@@ -119,6 +141,15 @@ function runSteps(action: Action, sc: Scenario, tc: Case, scenarioShared?: Share
       await retryStep('STEP 1: Host opens App + focuses scenario conversation', async () => {
          await openConv(sender, sc.hostConv);
       });
+
+      // STEP 1.1 (seedPerCase only): seed a fresh root before baselines so the
+      // seed message is already counted, and downstream unread deltas reflect
+      // only the action under test.
+      if (action.seedPerCase && action.seedRoot) {
+         await retryStep('STEP 1.1: Seed fresh root for this case', async () => {
+            await captureSeedRoot(action, shared, sender, undefined, undefined);
+         });
+      }
 
       // Baselines BEFORE sending.
       // `readAppBarBreakdown()` actually returns all unread aria-labels in the
@@ -155,7 +186,7 @@ function runSteps(action: Action, sc: Scenario, tc: Case, scenarioShared?: Share
       // STEP 4: Host verifies last message + screenshot.
       await retryStep('STEP 4: Host verifies "Last Message" + screenshot', async () => {
          if (action.verifyOverride) await action.verifyOverride(sender, tc, shared);
-         else                       await sender.view.verifyLastMessage(tc.expected, tc.type, quoteOf);
+         else                       await sender.view.verifyLastMessage(tc.expected, tc.type, quoteOf());
          await attachScreenshot(user1.page, '1-host-last-message');
       });
 
@@ -212,7 +243,7 @@ function runSteps(action: Action, sc: Scenario, tc: Case, scenarioShared?: Share
       await retryStep('STEP 9: VM enters conversation + verifies "Last Message" + screenshot', async () => {
          await openConv(receiver, sc.vmConv);
          if (action.verifyOverride) await action.verifyOverride(receiver, tc, shared);
-         else                       await receiver.view.verifyLastMessage(tc.expected, tc.type, quoteOf);
+         else                       await receiver.view.verifyLastMessage(tc.expected, tc.type, quoteOf());
          await attachScreenshot(user2.page, '3-vm-last-message');
       });
 

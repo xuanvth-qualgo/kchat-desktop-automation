@@ -15,6 +15,7 @@ runCases(
 
       seedRoot: async svc => {
          await svc.send.sendVoice(1000, `${RUN_TAG}`);
+         return Voice.ROOT;
       },
       prelude: async (sender, shared) => {
          await sender.actions.do('reply', { id: shared.rootId, type: Voice.ROOT.type });

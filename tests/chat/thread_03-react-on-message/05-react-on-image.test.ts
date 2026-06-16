@@ -11,6 +11,7 @@ runCases(
       severity:      'critical',
       scope:         'once',
       skipPushNotif: true,      
+      rootType:      'image',
       description:   ctx => `[Thread Conversation] React on image to ${ctx}`,
 
       seedRoot: async svc => {

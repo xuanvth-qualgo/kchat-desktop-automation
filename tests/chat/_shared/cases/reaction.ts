@@ -29,7 +29,7 @@ export function buildCases({ root, ...opts }: CaseFactoryOpts & { root: Reaction
          run: react('fast', [FAST[0]], root),
          expected: tip(FAST[0]),
          once: true,
-         smoke: true,
+         //smoke: true,
       },
       {
          id: '02',
@@ -44,6 +44,7 @@ export function buildCases({ root, ...opts }: CaseFactoryOpts & { root: Reaction
          run: react('more', [MORE_ALL[0]], root),
          expected: tip(MORE_ALL[0]),
          once: true,
+         smoke: true
       },
       {
          id: '04',

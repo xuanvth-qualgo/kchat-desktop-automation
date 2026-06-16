@@ -11,6 +11,7 @@ runCases(
       severity:      'critical',
       scope:         'once',
       skipPushNotif: true,      
+      rootType:      'file',
       description:   ctx => `[Main Conversation] Reply on file to ${ctx}`,
 
       seedRoot: async svc => {

@@ -1,4 +1,5 @@
 import { expect, Page } from '@playwright/test';
+import { allure } from 'allure-playwright';
 import { ChatPage } from '../../pages/chat/ChatPage';
 import { MessageType, MessageVerifier } from './types';
 import { handlerFor } from './ChatTypeHandlers';
@@ -91,8 +92,8 @@ export class ChatView implements MessageVerifier {
          while (Date.now() < deadline) {
             await this.chatPage.scrollToBottom();
             try {
-               if (quoteOf && expected) {
-                  await this.assertQuotePresent(expected, stepTo);
+               if (quoteOf) {
+                  await this.assertQuotePresent(quoteOf, stepTo);
                }
                await this.dispatchVerifyByType(expected, type, stepTo);
                return;
@@ -154,6 +155,8 @@ export class ChatView implements MessageVerifier {
 
    async takeScreenShot(actionName: string, opts?: { waitMs?: number }): Promise<void> {
       if (opts?.waitMs) await this.page.waitForTimeout(opts.waitMs);
-      await this.page.screenshot({ path: `./screenshots/${actionName}-${Date.now()}.png` });
+      const buf = await this.page.screenshot({ path: `./screenshots/${actionName}-${Date.now()}.png` });
+      // Attach to Allure report (best effort — silently no-op when not running under allure reporter).
+      try { await allure.attachment(actionName, buf, 'image/png'); } catch { /* ignore */ }
    }
 }

@@ -15,6 +15,7 @@ runCases(
 
       seedRoot: async svc => {
          await svc.send.sendVoice(1000, `${RUN_TAG}`);
+         return Voice.ROOT;
       },
       verifyOverride: async (svc, tc, shared) => {
          await svc.view.verifyReactionOnMessage(shared.rootId!, tc.expected!);

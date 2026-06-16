@@ -1,0 +1,394 @@
+{
+	"__internal__": {
+		"migrations": {
+			"version": "0.8.13-beta.0"
+		}
+	},
+	"migrations": {
+		"internalStorageKeyEncodingVersion": "1"
+	},
+	"user": {
+		"default": {
+			"mls:local_device_id": {
+				"value": "SHLGM0PTA4CDYKMH",
+				"metadata": {
+					"createdAt": 1781584617855,
+					"updatedAt": 1781584617855,
+					"expiresAt": 0,
+					"size": 18,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"mls:server_device_id": {
+				"value": "14823",
+				"metadata": {
+					"createdAt": 1781584618258,
+					"updatedAt": 1781584618258,
+					"expiresAt": 0,
+					"size": 7,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"mls:fingerprint": {
+				"value": "SHLGM0PTA4CDYKMH",
+				"metadata": {
+					"createdAt": 1781584618264,
+					"updatedAt": 1781584618264,
+					"expiresAt": 0,
+					"size": 18,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"mls:key_packages_published": {
+				"value": "true",
+				"metadata": {
+					"createdAt": 1781584618268,
+					"updatedAt": 1781584618268,
+					"expiresAt": 0,
+					"size": 6,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"xmpp:joined-rooms": {
+				"value": "[]",
+				"metadata": {
+					"createdAt": 1781584731014,
+					"updatedAt": 1781608105868,
+					"expiresAt": 0,
+					"size": 4,
+					"scope": "user",
+					"encrypted": false
+				}
+			}
+		},
+		"sync": {
+			"maintenance:conversation_orphaned_cleanup": {
+				"value": 1781584618295,
+				"metadata": {
+					"createdAt": 1781584618298,
+					"updatedAt": 1781584618298,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"group:global": {
+				"value": 1781608103868,
+				"metadata": {
+					"createdAt": 1781584618369,
+					"updatedAt": 1781608104168,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"contact:global": {
+				"value": 1781608103867,
+				"metadata": {
+					"createdAt": 1781584618494,
+					"updatedAt": 1781608104184,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"notification:global": {
+				"value": 1781608103869,
+				"metadata": {
+					"createdAt": 1781584618521,
+					"updatedAt": 1781608104175,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"conversation:global": {
+				"value": 1781608103866,
+				"metadata": {
+					"createdAt": 1781584618534,
+					"updatedAt": 1781608104215,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"community:global": {
+				"value": 1781608103867,
+				"metadata": {
+					"createdAt": 1781584618607,
+					"updatedAt": 1781608104076,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"message:a1f119d5-35af-44ed-b4fd-fa186d02f369@qa-kchat~qualgo~dev-e9d6d8da-fc7a-4c34-8835-0843b30d3a26@qa-kchat~qualgo~dev": {
+				"value": 1781584618612,
+				"metadata": {
+					"createdAt": 1781584618788,
+					"updatedAt": 1781584618788,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"message:0cb9b607-bf77-4760-8a17-1c8c0651013e@conference~qa-kchat~qualgo~dev": {
+				"value": 1781587169485,
+				"metadata": {
+					"createdAt": 1781587170038,
+					"updatedAt": 1781587170038,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"message:f6a9f6bd-4d05-4b4f-b5f8-cdc2b4337dfa@conference~qa-kchat~qualgo~dev": {
+				"value": 1781587169485,
+				"metadata": {
+					"createdAt": 1781587170044,
+					"updatedAt": 1781587170044,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"message:fe32fea7-06c4-4746-9891-204c8165c781@conference~qa-kchat~qualgo~dev": {
+				"value": 1781587169485,
+				"metadata": {
+					"createdAt": 1781587170049,
+					"updatedAt": 1781587170049,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"message:37ec7eb4-0274-408f-b37e-f1f9e313ac0e@conference~qa-kchat~qualgo~dev": {
+				"value": 1781587169485,
+				"metadata": {
+					"createdAt": 1781587170054,
+					"updatedAt": 1781587170054,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"message:6bee6798-a2e5-4e7b-ba2c-bd7859c95745@conference~qa-kchat~qualgo~dev": {
+				"value": 1781605460642,
+				"metadata": {
+					"createdAt": 1781587170059,
+					"updatedAt": 1781605463494,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"message:e0425de9-8707-49b1-adc2-d4a3643b9fd6@conference~qa-kchat~qualgo~dev": {
+				"value": 1781607402436,
+				"metadata": {
+					"createdAt": 1781587170064,
+					"updatedAt": 1781607402737,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"message:b08c809f-9cc0-4dc9-b954-aab66d1de02c@conference~qa-kchat~qualgo~dev": {
+				"value": 1781587169485,
+				"metadata": {
+					"createdAt": 1781587170068,
+					"updatedAt": 1781587170068,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"message:23187221-890a-41cd-8a25-67193b335d57@qa-kchat~qualgo~dev-a1f119d5-35af-44ed-b4fd-fa186d02f369@qa-kchat~qualgo~dev": {
+				"value": 1781591566922,
+				"metadata": {
+					"createdAt": 1781587170072,
+					"updatedAt": 1781591567146,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"message:195d453f-c147-4e01-bceb-75b1846e47ca@qa-kchat~qualgo~dev-a1f119d5-35af-44ed-b4fd-fa186d02f369@qa-kchat~qualgo~dev": {
+				"value": 1781591566922,
+				"metadata": {
+					"createdAt": 1781587170076,
+					"updatedAt": 1781591567150,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"message:138a8bdf-7114-49fe-9f7e-fbfcac0d5e63@qa-kchat~qualgo~dev-a1f119d5-35af-44ed-b4fd-fa186d02f369@qa-kchat~qualgo~dev": {
+				"value": 1781608104224,
+				"metadata": {
+					"createdAt": 1781587170080,
+					"updatedAt": 1781608104348,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"message:9960756a-2371-4ee9-ac66-2ad335178393@qa-kchat~qualgo~dev-a1f119d5-35af-44ed-b4fd-fa186d02f369@qa-kchat~qualgo~dev": {
+				"value": 1781587169485,
+				"metadata": {
+					"createdAt": 1781587170085,
+					"updatedAt": 1781587170085,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"participant:195d453f-c147-4e01-bceb-75b1846e47ca@qa-kchat~qualgo~dev-a1f119d5-35af-44ed-b4fd-fa186d02f369@qa-kchat~qualgo~dev": {
+				"value": 1781587170662,
+				"metadata": {
+					"createdAt": 1781587170664,
+					"updatedAt": 1781587170664,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"participant:138a8bdf-7114-49fe-9f7e-fbfcac0d5e63@qa-kchat~qualgo~dev-a1f119d5-35af-44ed-b4fd-fa186d02f369@qa-kchat~qualgo~dev": {
+				"value": 1781608105321,
+				"metadata": {
+					"createdAt": 1781587171205,
+					"updatedAt": 1781608105323,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"participant:23187221-890a-41cd-8a25-67193b335d57@qa-kchat~qualgo~dev-a1f119d5-35af-44ed-b4fd-fa186d02f369@qa-kchat~qualgo~dev": {
+				"value": 1781587171945,
+				"metadata": {
+					"createdAt": 1781587171946,
+					"updatedAt": 1781587171946,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"participant:6bee6798-a2e5-4e7b-ba2c-bd7859c95745@conference~qa-kchat~qualgo~dev": {
+				"value": 1781603707257,
+				"metadata": {
+					"createdAt": 1781591671042,
+					"updatedAt": 1781603707461,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"community_member:8f12ab2a-1b65-46bf-b593-de96424cc9c6": {
+				"value": 1781595215708,
+				"metadata": {
+					"createdAt": 1781591672800,
+					"updatedAt": 1781595215831,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"debt:message:missing_entity": {
+				"value": {
+					"version": 1,
+					"updatedAt": 1781594656028,
+					"entries": {}
+				},
+				"metadata": {
+					"createdAt": 1781594653226,
+					"updatedAt": 1781594656028,
+					"expiresAt": 0,
+					"size": 52,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"participant:a1f119d5-35af-44ed-b4fd-fa186d02f369@qa-kchat~qualgo~dev-e9d6d8da-fc7a-4c34-8835-0843b30d3a26@qa-kchat~qualgo~dev": {
+				"value": 1781607579768,
+				"metadata": {
+					"createdAt": 1781594675791,
+					"updatedAt": 1781607579769,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"participant:fe32fea7-06c4-4746-9891-204c8165c781@conference~qa-kchat~qualgo~dev": {
+				"value": 1781595215605,
+				"metadata": {
+					"createdAt": 1781595215807,
+					"updatedAt": 1781595215807,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"message:80c96582-f67f-44be-99be-bbeea2995869@conference~qa-kchat~qualgo~dev": {
+				"value": 1781608104224,
+				"metadata": {
+					"createdAt": 1781607066361,
+					"updatedAt": 1781608104339,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"participant:80c96582-f67f-44be-99be-bbeea2995869@conference~qa-kchat~qualgo~dev": {
+				"value": 1781607309450,
+				"metadata": {
+					"createdAt": 1781607309622,
+					"updatedAt": 1781607309622,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			},
+			"participant:e0425de9-8707-49b1-adc2-d4a3643b9fd6@conference~qa-kchat~qualgo~dev": {
+				"value": 1781607311340,
+				"metadata": {
+					"createdAt": 1781607311551,
+					"updatedAt": 1781607311551,
+					"expiresAt": 0,
+					"size": 13,
+					"scope": "user",
+					"encrypted": false
+				}
+			}
+		}
+	}
+}

@@ -11,6 +11,7 @@ runCases(
       severity:      'critical',
       scope:         'once',
       skipPushNotif: true,      
+      rootType:      'video',
       description:   ctx => `[Main Conversation] Reply on video to ${ctx}`,
 
       seedRoot: async svc => {

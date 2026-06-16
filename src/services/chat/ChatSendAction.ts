@@ -36,9 +36,6 @@ export class ChatSendAction implements MessageSender {
             continue;
          }
          if (!(await composers.hasFailedBubble())) {
-            // Wait until composer is fully settled (no pending uploads) before
-            // letting the caller queue the next round. The Send button being
-            // disabled is a reliable indicator: input is empty AND no chips.
             await composers.waitForSettled(15_000);
             if (retries > 0) log.info(`[commitSend] recovered after ${retries} Retry click(s)`);
             return;
@@ -53,8 +50,6 @@ export class ChatSendAction implements MessageSender {
       }
    }
 
-   /* Open the emoji picker, navigate to a category, and click the first emoji
-    * of the requested set. Dumps a truncated DOM if the picker fails to show. */
    private async pickEmoji(obj: EmojiObj): Promise<void> {
       if (!obj.category) throw new Error('sendEmoji requires obj.category');
       const categoryBtn = getButtonByName(this.page, obj.category);

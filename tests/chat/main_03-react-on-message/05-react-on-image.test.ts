@@ -12,6 +12,7 @@ runCases(
       scope:         'once',
       skipSidebarUnread: true,
       skipPushNotif: true,
+      rootType:      'image',
       description:   ctx => `[Main Conversation] React on image to ${ctx}`,
 
       seedRoot: async svc => {

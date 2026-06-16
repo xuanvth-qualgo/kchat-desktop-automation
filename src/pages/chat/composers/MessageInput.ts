@@ -16,12 +16,10 @@ export class MessageInput extends ComposerScope {
       return await this.ip_message.inputValue().catch(() => '');
    }
 
-   /** True when the Send button is disabled — composer has no text and no pending uploads. */
    async isSendDisabled(): Promise<boolean> {
       return await this.btn_sendMessage.isDisabled().catch(() => false);
    }
 
-   /** Poll until the Send button becomes disabled (composer fully settled). */
    async waitForSettled(timeoutMs: number = 15_000): Promise<boolean> {
       const deadline = Date.now() + timeoutMs;
       while (Date.now() < deadline) {

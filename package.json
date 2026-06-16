@@ -4,10 +4,12 @@
   "description": "git clone \"https://github.com/xuanvth-qualgo/kchat-desktop-automation.git\" && cd kchat-desktop-automation",
   "scripts": {
     "test": "node scripts/test-filter.js",
+    "first-login": "npx playwright test first-login",
     "cleanrpt": "rm -rf allure-results allure-report",
     "genrpt": "rm -rf allure-report && npx allure generate allure-results -o allure-report",
     "openrpt": "npx allure open allure-report",
-    "serverpt": "npx allure serve allure-results"
+    "serverpt": "npx allure serve allure-results",
+    "ci": "./scripts/run-and-report.sh"
   },
   "repository": {
     "type": "git",
@@ -35,6 +37,7 @@
     "allure-commandline": "^2.42.0",
     "allure-playwright": "^3.7.1",
     "concurrently": "^9.2.1",
-    "electron": "^41.3.0"
+    "electron": "^41.3.0",
+    "playwright": "^1.59.1"
   }
 }

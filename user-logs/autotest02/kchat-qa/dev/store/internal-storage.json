@@ -1,0 +1,122 @@
+{
+	"__internal__": {
+		"migrations": {
+			"version": "0.8.13-beta.0"
+		}
+	},
+	"migrations": {
+		"internalStorageKeyEncodingVersion": "1"
+	},
+	"app": {
+		"devtools": {
+			"devtools:settings": {
+				"value": {
+					"extensions": {
+						"enabled": true,
+						"autoInstall": true,
+						"list": [
+							"fmkadmapgofadopljbjfkapdkoienihi",
+							"lmhkpmbekcpmknklioeibfkpmmfibljd"
+						],
+						"retryCount": 3,
+						"retryDelay": 2000
+					},
+					"session": {
+						"enableSourceMaps": true,
+						"allowUnsafeEval": true
+					},
+					"logging": {
+						"fileLogging": true
+					},
+					"devTools": {
+						"autoOpen": false
+					}
+				},
+				"metadata": {
+					"createdAt": 1781584487257,
+					"updatedAt": 1781608101687,
+					"expiresAt": 0,
+					"size": 304,
+					"scope": "app",
+					"encrypted": false
+				}
+			}
+		},
+		"maintenance": {
+			"last-run~v1": {
+				"value": {
+					"prune-obsolete-logs": {
+						"lastSuccessAt": 1781608101265,
+						"lastDurationMs": 1
+					},
+					"recover-stuck-conversations": {
+						"lastSuccessAt": 1781608103881,
+						"lastDurationMs": 2
+					},
+					"evict-media-cache": {
+						"lastSuccessAt": 1781608103889,
+						"lastDurationMs": 1
+					},
+					"purge-failed-conversations": {
+						"lastSuccessAt": 1781608103896,
+						"lastDurationMs": 7
+					},
+					"purge-tombstones": {
+						"lastSuccessAt": 1781608103902,
+						"lastDurationMs": 13
+					},
+					"audit-badge-drift": {
+						"lastSuccessAt": 1781608103908,
+						"lastDurationMs": 19
+					},
+					"sweep-stale-transfers": {
+						"lastSuccessAt": 1781608103914,
+						"lastDurationMs": 26
+					},
+					"sweep-orphan-temporary": {
+						"lastSuccessAt": 1781608103919,
+						"lastDurationMs": 30
+					},
+					"sweep-vault-legacy": {
+						"lastSuccessAt": 1781608103925,
+						"lastDurationMs": 36
+					}
+				},
+				"metadata": {
+					"createdAt": 1781584501158,
+					"updatedAt": 1781608103925,
+					"expiresAt": 0,
+					"size": 675,
+					"scope": "app",
+					"encrypted": false
+				}
+			}
+		},
+		"window-manager": {
+			"window:state:main": {
+				"value": {
+					"width": 1024,
+					"height": 768,
+					"x": 399,
+					"y": 133,
+					"isMaximized": false,
+					"isFullscreen": false,
+					"displayBounds": {
+						"x": 0,
+						"y": 0,
+						"width": 1512,
+						"height": 982
+					}
+				},
+				"metadata": {
+					"createdAt": 1781584608549,
+					"updatedAt": 1781608106249,
+					"expiresAt": 0,
+					"size": 140,
+					"scope": "app",
+					"encrypted": false
+				}
+			}
+		}
+	}
+}

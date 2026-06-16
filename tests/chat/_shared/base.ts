@@ -41,6 +41,8 @@ export type Action = {
    skipSidebarUnread?: boolean;
    skipPushNotif?: boolean;
    rootType?:     MessageType; // type of the seedRoot message; used to skip context-incompatible scenarios (e.g. mention root in Direct)
+   seedFromHost?: boolean;     // force host as seeder (e.g. edit/delete: actor can only act on own message)
+   seedPerCase?: boolean;      // seed a fresh root for every test case (e.g. edit/delete mutate/remove the root)
 };
 
 export type CaseFactoryOpts = {
