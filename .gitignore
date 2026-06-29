@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Playwright
+playwright-report/
+test-results/
+
+# Allure
+allure-results/
+allure-report/
+
+# Applications
+Applications/macOS/*
+!Applications/macOS/.gitkeep
+
+Applications/win32/*
+!Applications/win32/.gitkeep
+
+# Runtime
+user-logs/*
+!user-logs/.gitkeep
+
+test-screenshots/*
+!test-screenshots/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
