@@ -1,10 +1,14 @@
 # 0. User Guide Video
-https://qualgotechnologies-my.sharepoint.com/my?id=%2Fpersonal%2Fxuan%5Fvth%5Fqualgo%5Fnet%2FDocuments%2FKChat%20Desktop%20Automation
+Link: https://qualgotechnologies-my.sharepoint.com/my?id=%2Fpersonal%2Fxuan%5Fvth%5Fqualgo%5Fnet%2FDocuments%2FKChat%20Desktop%20Automation
 
 > clip 1: clone repo
+
 > clip 2: setup libs
+
 > clip 3: setup app
+
 > clip 4: first login
+
 > clip 5: run test
 
 # 1. IDE Tool
