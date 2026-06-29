@@ -1,5 +1,5 @@
 # 0. User Guide Video
-Link: https://qualgotechnologies-my.sharepoint.com/my?id=%2Fpersonal%2Fxuan%5Fvth%5Fqualgo%5Fnet%2FDocuments%2FKChat%20Desktop%20Automation
+Link: [https://qualgotechnologies-my.sharepoint.com/my?id=%2Fpersonal%2Fxuan%5Fvth%5Fqualgo%5Fnet%2FDocuments%2FKChat%20Desktop%20Automation](https://qualgotechnologies-my.sharepoint.com/:f:/g/personal/xuan_vth_qualgo_net/IgABZCIlmQkPQ5y9KFGV79NMAT2mR9SS4Vy7Tme-5G7Agk8?e=H6JRT0)
 
 > clip 1: clone repo
 
