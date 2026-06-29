@@ -1,0 +1,72 @@
+{
+  "name": "kchat-desktop-automation",
+  "version": "1.0.0",
+  "description": "git clone \"https://github.com/xuanvth-qualgo/kchat-desktop-automation.git\" && cd kchat-desktop-automation",
+  "scripts": {
+    "login": "npx playwright test first-login",
+    "upd-setting": "npx playwright test update-setting",
+    "clean-rpt": "rm -rf allure-results allure-report",
+    "gen-rpt": "rm -rf allure-report && npx allure generate allure-results -o allure-report && npx allure open allure-report",
+    "run-test": "./run-test.sh",   
+    
+    "all": "./run-test.sh \"tests/chat/CHAT-1_send-message\" \"tests/chat/CHAT-2_edit-message\" \"tests/chat/CHAT-3_reply-message\" \"tests/chat/CHAT-4_create-thread\" \"tests/chat/CHAT-5_delete-message\" \"tests/chat/CHAT-6_forward-message\" \"tests/chat/CHAT-7_copy-message\" \"tests/chat/CHAT-8_react-message\" \"tests/call/CALL-1_voice-call.test.ts\" \"tests/call/CALL-2_video-call.test.ts\"",
+    "S-all": "./run-test.sh \"tests/chat/CHAT-1_send-message\" \"tests/chat/CHAT-2_edit-message\" \"tests/chat/CHAT-3_reply-message\" \"tests/chat/CHAT-4_create-thread\" \"tests/chat/CHAT-5_delete-message\" \"tests/chat/CHAT-6_forward-message\" \"tests/chat/CHAT-7_copy-message\" \"tests/chat/CHAT-8_react-message\" \"tests/call/CALL-1_voice-call.test.ts\" \"tests/call/CALL-2_video-call.test.ts\" -g \"@smoke\"",
+    
+    "chat": "./run-test.sh \"tests/chat/CHAT-1_send-message\" \"tests/chat/CHAT-2_edit-message\" \"tests/chat/CHAT-3_reply-message\" \"tests/chat/CHAT-4_create-thread\" \"tests/chat/CHAT-5_delete-message\" \"tests/chat/CHAT-6_forward-message\" \"tests/chat/CHAT-7_copy-message\" \"tests/chat/CHAT-8_react-message\"",
+    "send-msg": "./run-test.sh \"tests/chat/CHAT-1_send-message\"",
+    "edit-msg": "./run-test.sh \"tests/chat/CHAT-2_edit-message\"",
+    "reply-msg": "./run-test.sh \"tests/chat/CHAT-3_reply-message\"",
+    "cre-thread": "./run-test.sh \"tests/chat/CHAT-4_create-thread\"",
+    "delete-msg": "./run-test.sh \"tests/chat/CHAT-5_delete-message\"",
+    "forward-msg": "./run-test.sh \"tests/chat/CHAT-6_forward-message\"",
+    "copy-msg": "./run-test.sh \"tests/chat/CHAT-7_copy-message\"",
+    "react-msg": "./run-test.sh \"tests/chat/CHAT-8_react-message\"",
+    "call":"./run-test.sh \"tests/call/CALL-1_voice-call.test.ts\" \"tests/call/CALL-2_video-call.test.ts\"",
+    "voice-call":"./run-test.sh \"tests/call/CALL-1_voice-call.test.ts\"",
+    "video-call":"./run-test.sh \"tests/call/CALL-2_video-call.test.ts\"",
+
+    "S-chat": "./run-test.sh \"tests/chat/CHAT-1_send-message\" \"tests/chat/CHAT-2_edit-message\" \"tests/chat/CHAT-3_reply-message\" \"tests/chat/CHAT-4_create-thread\" \"tests/chat/CHAT-5_delete-message\" \"tests/chat/CHAT-6_forward-message\" \"tests/chat/CHAT-7_copy-message\" \"tests/chat/CHAT-8_react-message\" -g \"@smoke\"",
+    "S-send-msg": "./run-test.sh \"tests/chat/CHAT-1_send-message\" -g \"@smoke\"",
+    "S-edit-msg": "./run-test.sh \"tests/chat/CHAT-2_edit-message\" -g \"@smoke\"",
+    "S-reply-msg": "./run-test.sh \"tests/chat/CHAT-3_reply-message\" -g \"@smoke\"",
+    "S-cre-thread": "./run-test.sh \"tests/chat/CHAT-4_create-thread\" -g \"@smoke\"",
+    "S-delete-msg": "./run-test.sh \"tests/chat/CHAT-5_delete-message\" -g \"@smoke\"",
+    "S-forward-msg": "./run-test.sh \"tests/chat/CHAT-6_forward-message\" -g \"@smoke\"",
+    "S-copy-msg": "./run-test.sh \"tests/chat/CHAT-7_copy-message\" -g \"@smoke\"",
+    "S-react-msg": "./run-test.sh \"tests/chat/CHAT-8_react-message\" -g \"@smoke\"",
+    "S-call":"./run-test.sh \"tests/call/CALL-1_voice-call.test.ts\" \"tests/call/CALL-2_video-call.test.ts\"",
+    "S-voice-call":"./run-test.sh \"tests/call/CALL-1_voice-call.test.ts\" -g \"@smoke\"",
+    "S-video-call":"./run-test.sh \"tests/call/CALL-2_video-call.test.ts\" -g \"@smoke\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuanvth-qualgo/kchat-desktop-automation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/xuanvth-qualgo/kchat-desktop-automation/issues"
+  },
+  "homepage": "https://github.com/xuanvth-qualgo/kchat-desktop-automation#readme",
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "nodemailer": "^6.9.16",
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.0",
+    "@types/archiver": "^6.0.3",
+    "@types/nodemailer": "^6.4.17",
+    "@types/prompt-sync": "^4.2.3",
+    "allure-commandline": "^2.42.0",
+    "allure-playwright": "^3.10.0",
+    "concurrently": "^9.2.1",
+    "electron": "^41.8.0",
+    "playwright": "^1.59.1"
+  }
+}

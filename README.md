@@ -1,15 +1,109 @@
-npm run open-app
-
-chmod +x start-app.sh
-./start-app.sh
+# 0. User Guide Video
 
 
-Applications: app de run
-core: xuong song
-helpers: tien ich
-locators: xpath, css element
-screens: man hinh thuc hien thao tac
-suites: flow hoan chinh can test (test suite)
-tests: execute 
-screenshots: evidence
-test-results, playwright-report: cua playwright tu gen
+
+# 1. IDE Tool
+
+* VS Code (recommend to fast debug)
+
+* Windsurf (recommend to auto complete code suggestion)
+
+# 2. Clone repo:
+
+> Open project folder in IDE tool
+
+    git clone "https://github.com/xuanvth-qualgo/kchat-desktop-automation.git" && cd kchat-desktop-automation
+
+    git fetch --all
+
+    git checkout -b demo-1 origin/phase-1
+
+    git add -A
+
+    git diff --staged
+
+    git reset {file}
+
+    git commit -m "{datetime} - {jira id} - {summary}"
+
+    git push origin phase-1
+
+    git status
+
+# 3. Install app:
+
+> Download the lastest app at KChat-Desktop GitHub repo
+
+* macOS: copy-paste 'KChat QA.app' file to folder 'Applications/macOS'
+
+* Windows: copy-paste 'KChat-QA.exe' file to folder 'Applications/win32'
+
+# 4. Install library:
+
+> Setup brew and NodeJS
+
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    echo >> /Users/admin/.zprofile
+
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv zsh)"' >> /Users/admin/.zprofile
+
+    eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+
+    brew --version
+
+    brew install node
+
+    node -v
+
+    npm -v
+
+> Setup dependencies
+
+* macOS: chmod +x ./setup.sh && ./setup.sh
+
+* Windows: ./setup.bat
+
+# 5. Execution: follow script keys in package.json
+
+> Use VS Code: Run file directly via 'Click to run tests ...' (This option will run all cases and have not generated report)
+
+> Run script by key
+
+* At Terminal: npm run {key}
+
+* Debug in package.json
+
+# First login (*):
+
+    npm run login
+
+# Update setting (if want)
+
+    npm run upd-setting
+
+# All: 
+
+    npm run all
+
+    npm run S-all (only smoke)
+
+# Specific module:
+
+    npm run chat
+
+    npm run S-chat (only smoke)
+
+# Specific feature:
+
+    npm run send-msg
+
+    npm run S-send-msg (only smoke)
+
+# Custom (if want)
+
+    npm run all -g "@smoke"
+
+    npm run chat -g "@smoke"
+
+    npm run reply-msg -g "@regression"
