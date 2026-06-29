@@ -16,13 +16,9 @@
 
     git fetch --all
 
-    git checkout -b demo-1 origin/phase-1
+    git checkout -b phase-1 origin/phase-1
 
-    git add -A
-
-    git diff --staged
-
-    git reset {file}
+    git add -A (all or select specific files)
 
     git commit -m "{datetime} - {jira id} - {summary}"
 
